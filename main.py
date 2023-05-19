@@ -2,19 +2,11 @@ from fastapi import FastAPI, Request, Response
 from google.cloud import storage
 import re,os
 import uuid
-from fastapi.middleware.cors import CORSMiddleware
+# from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import Response
 
 app = FastAPI()
 
-# Configure CORS
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["https://compfox-qa.onrender.com"],  # Replace with your client's origin URL
-    allow_credentials=True,
-    allow_methods=["POST"],
-    allow_headers=["*"],
-)
 
 
 app = FastAPI()
