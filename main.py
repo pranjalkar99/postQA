@@ -2,6 +2,21 @@ from fastapi import FastAPI, Request, Response
 from google.cloud import storage
 import re,os
 import uuid
+from fastapi.middleware.cors import CORSMiddleware
+from starlette.responses import Response
+
+app = FastAPI()
+
+# Configure CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://compfox-qa.onrender.com"],  # Replace with your client's origin URL
+    allow_credentials=True,
+    allow_methods=["POST"],
+    allow_headers=["*"],
+)
+
+
 app = FastAPI()
 
 def upload_to_gcp_bucket(bucket_name, file_path, key_path, new_filename=None):
